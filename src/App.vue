@@ -1,11 +1,8 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
-
+  <router-view></router-view>
 </template>
 
-<style>
-
+<style lang="scss">
+@import './assets/styles/normalize.scss';
+@import '@/assets/styles/iconfont.scss';
 </style>
