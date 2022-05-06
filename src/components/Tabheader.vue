@@ -6,7 +6,12 @@
     </el-col>
     <el-col :span="17" class="expand">
       <el-icon @click="changeExpand" class="icon-expand">
-        <expand />
+        <template v-if="isExpend">
+          <expand/>
+        </template>
+        <template v-else>
+          <fold/>
+        </template>
       </el-icon>
     </el-col>
     <el-col :span="4" class="right">
@@ -17,7 +22,7 @@
         <span class="el-dropdown-link">
           koto
           <el-icon class="el-icon--right">
-            <arrow-down />
+            {{}}<arrow-down />
           </el-icon>
         </span>
         <template #dropdown>
@@ -36,11 +41,15 @@
 </template>
 
 <script setup>
-import { UserFilled, ArrowDown, SwitchButton, Expand } from '@element-plus/icons-vue'
+import { ArrowDown, SwitchButton, Expand,Fold } from '@element-plus/icons-vue'
+import { ref } from 'vue';
 import bus from '@/utils/mitt.js'
+
+let isExpend=ref(false)
 
 const changeExpand = () => {
   bus.emit('changeWidth')
+  isExpend.value=!isExpend.value
 }
 </script>
 

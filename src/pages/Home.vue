@@ -44,7 +44,7 @@
                 <el-icon>
                   <setting />
                 </el-icon>
-                <span>管理</span>
+                <span>系统管理</span>
               </template>
               <el-menu-item index="3-1">
                 <el-icon>
@@ -80,14 +80,13 @@
 import Tabheader from '@/components/Tabheader.vue'
 import BreadList from '@/components/BreadList.vue'
 import {
-  Menu as IconMenu,
   Odometer,
   DataAnalysis,
   List,
   UserFilled,
   Edit,
   Setting,
-  TrendCharts
+  TrendCharts,
 } from '@element-plus/icons-vue'
 import bus from '@/utils/mitt.js'
 import { ref, onMounted } from 'vue'
