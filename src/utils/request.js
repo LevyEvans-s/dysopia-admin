@@ -3,21 +3,21 @@
  * @author Koto
  */
 import axios from 'axios'
-import config from '../config'
+import conf from '../config'
 
 const service = axios.create({
-  baseURL: config.baseApi,
+  baseURL: conf.baseApi,
   timeout:8000
 })
 
 //请求拦截
-service.interceptors.request.use(req => {
-  return req
+service.interceptors.request.use(config => {
+  return config
 })
 
 //响应拦截
-service.interceptors.response.use(res => {
-  const { code, data, msg } = res.data
+service.interceptors.response.use(config => {
+  const { code, data, msg } = config.data
   if (code === 200) {
     return data
   }

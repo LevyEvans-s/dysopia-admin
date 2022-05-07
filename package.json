@@ -9,6 +9,8 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@authing/vue-ui-components": "^3.1.10",
+    "authing-js-sdk": "^4.23.29",
     "axios": "^0.27.2",
     "element-plus": "^2.1.11",
     "mitt": "^3.0.0",

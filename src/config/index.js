@@ -10,6 +10,6 @@ const EnvConfig = {
 
 export default {
   env,
-  namespace:'dysopia-admin'
+  namespace:'dysopia-admin',
   ...EnvConfig[env]
 }
