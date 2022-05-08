@@ -8,12 +8,12 @@
         <el-aside :width="`${width}vw`" class="nav-side">
           <el-menu active-text-color="#ffd04b" background-color="rgb(48,49,53)" text-color="#fff" class="menu"
             :collapse="isCollapse" default-active="1">
-            <!-- Dashboard -->
+            <!-- Welcome -->
             <el-menu-item index="1">
               <el-icon>
-                <odometer />
+                <promotion />
               </el-icon>
-              <router-link to="/dashboard">Dashboard</router-link>
+              <router-link to="/home/welcome">欢迎</router-link>
             </el-menu-item>
             <!-- 统计 -->
             <el-sub-menu index="2">
@@ -28,13 +28,13 @@
                   <el-icon>
                     <trend-charts />
                   </el-icon>
-                  <router-link to="/useranalysis">用户行为</router-link>
+                  <router-link to="/home/useranalysis">用户行为</router-link>
                 </el-menu-item>
                 <el-menu-item index="2-2">
                   <el-icon>
                     <list />
                   </el-icon>
-                  <router-link to="/newsanalysis">新闻数据</router-link>
+                  <router-link to="/home/newsanalysis">新闻数据</router-link>
                 </el-menu-item>
               </el-menu-item-group>
             </el-sub-menu>
@@ -50,13 +50,13 @@
                 <el-icon>
                   <user-filled />
                 </el-icon>
-                <router-link to="/usermanagement">用户管理</router-link>
+                <router-link to="/home/usermanagement">用户管理</router-link>
               </el-menu-item>
               <el-menu-item index="3-2">
                 <el-icon>
                   <edit />
                 </el-icon>
-                <router-link to="/newsmanagement">新闻管理</router-link>
+                <router-link to="/home/newsmanagement">新闻管理</router-link>
               </el-menu-item>
             </el-sub-menu>
           </el-menu>
@@ -80,7 +80,7 @@
 import Tabheader from '@/components/Tabheader.vue'
 import BreadList from '@/components/BreadList.vue'
 import {
-  Odometer,
+  Promotion,
   DataAnalysis,
   List,
   UserFilled,
@@ -133,5 +133,7 @@ const changeWidth = () => {
 
 .content {
   background: rgb(228, 229, 230);
+  padding-top:0;
+  padding-left:25px;
 }
 </style>

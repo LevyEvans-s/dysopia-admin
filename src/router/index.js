@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router"
 import Home from '@/pages/Home.vue'
-import Dashboard from '@/pages/Dashboard.vue'
+import Dashboard from '@/pages/Welcome.vue'
 import NewsAnalysis from '@/pages/NewsAnalysis.vue'
 import UserAnalysis from '@/pages/UserAnalysis.vue'
 import UserManagement from '@/pages/Usermanagement.vue'
@@ -9,20 +9,24 @@ import storage from "../utils/storage"
 
 const routes = [
   {
+    path: '/',
+    redirect:'/home/welcome'
+  },
+  {
     name: 'Home',
     component: Home,
-    path: "/",
+    path: "/home",
     meta: {
       alias: '首页',
       requiresAuth: true
     },
     children: [
       {
-        name: 'Dashboard',
+        name: 'Welcome',
         component: Dashboard,
-        path: 'dashboard',
+        path: 'welcome',
         meta: {
-          alias: 'Dashboard',
+          alias: 'Welcome',
           requiresAuth: true
         }
       },
@@ -61,6 +65,15 @@ const routes = [
           alias: '新闻管理',
           requiresAuth: true
         }
+      },
+      {
+        name: '404',
+        component: () => import('@/pages/404.vue'),
+        path:'404'
+      },
+      {
+        path: '/:pathMatch(.*)',
+        redirect:'404'
       }
     ]
   },
@@ -68,7 +81,7 @@ const routes = [
     name: 'Login',
     component: () => import('@/pages/Login.vue'),
     path: '/login'
-  }
+  },
 ]
 
 const router = createRouter({
