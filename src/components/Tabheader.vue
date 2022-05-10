@@ -7,10 +7,10 @@
     <el-col :span="17" class="expand">
       <el-icon @click="changeExpand" class="icon-expand">
         <template v-if="isExpend">
-          <expand/>
+          <expand />
         </template>
         <template v-else>
-          <fold/>
+          <fold />
         </template>
       </el-icon>
     </el-col>
@@ -20,9 +20,9 @@
       </div>
       <el-dropdown trigger="click">
         <span class="el-dropdown-link">
-          koto
+          {{ mynickname ? mynickname : myemail }}
           <el-icon class="el-icon--right">
-            {{}}<arrow-down />
+            <arrow-down />
           </el-icon>
         </span>
         <template #dropdown>
@@ -31,7 +31,7 @@
               <el-icon>
                 <switch-button />
               </el-icon>
-              <span>退出登录</span>
+              <span @click="handleLogout">退出登录</span>
             </el-dropdown-item>
           </el-dropdown-menu>
         </template>
@@ -41,15 +41,35 @@
 </template>
 
 <script setup>
-import { ArrowDown, SwitchButton, Expand,Fold } from '@element-plus/icons-vue'
+import { ArrowDown, SwitchButton, Expand, Fold } from '@element-plus/icons-vue'
 import { ref } from 'vue';
-import bus from '@/utils/mitt.js'
+import { onMounted } from 'vue';
+import { useStore } from '@/store';
+import { useRouter } from 'vue-router'
+import bus from '@/utils/mitt'
 
-let isExpend=ref(false)
+let isExpend = ref(false)
+let mynickname = ref('')
+let myemail = ref('')
+const store = useStore()
+const router=useRouter()
+
+onMounted(() => {
+  //解析id_token并展示
+  mynickname.value = sessionStorage.getItem('nickname')
+  myemail.value = sessionStorage.getItem('email')
+})
 
 const changeExpand = () => {
   bus.emit('changeWidth')
-  isExpend.value=!isExpend.value
+  isExpend.value = !isExpend.value
+}
+
+const handleLogout = () => {
+  window.sessionStorage.clear()
+  store.user.nickname = ''
+  store.user.email = ''
+  router.push('/login')
 }
 </script>
 
@@ -95,7 +115,7 @@ const changeExpand = () => {
   justify-content: center;
 
   .avatar {
-    margin-right: 20px;
+    margin-right: 15px;
   }
 
   .el-dropdown-link {

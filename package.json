@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@authing/vue-ui-components": "^3.1.10",
+    "@wangeditor/editor-for-vue": "^5.1.11",
     "authing-js-sdk": "^4.23.29",
     "axios": "^0.27.2",
     "element-plus": "^2.1.11",
@@ -17,7 +18,7 @@
     "pinia": "^2.0.13",
     "sass": "^1.51.0",
     "vue": "^3.2.25",
-    "vue-router": "^4.0.14"
+    "vue-router": "^4.0.15"
   },
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",

@@ -5,11 +5,16 @@ import NewsAnalysis from '@/pages/NewsAnalysis.vue'
 import UserAnalysis from '@/pages/UserAnalysis.vue'
 import UserManagement from '@/pages/Usermanagement.vue'
 import NewsManagement from '@/pages/NewsManagement.vue'
+import NewsPost from '@/pages/NewsPost.vue'
 import storage from "../utils/storage"
 
 const routes = [
   {
     path: '/',
+    redirect:'/home/welcome'
+  },
+  {
+    path: '/home',
     redirect:'/home/welcome'
   },
   {
@@ -63,6 +68,15 @@ const routes = [
         path: 'newsmanagement',
         meta: {
           alias: '新闻管理',
+          requiresAuth: true
+        }
+      },
+      {
+        name: 'NewsPost',
+        component: NewsPost,
+        path: 'newspost',
+        meta: {
+          alias: '新闻发布',
           requiresAuth: true
         }
       },

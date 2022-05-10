@@ -56,6 +56,12 @@
                 <el-icon>
                   <edit />
                 </el-icon>
+                <router-link to="/home/newspost">新闻发布</router-link>
+              </el-menu-item>
+              <el-menu-item index="3-3">
+                <el-icon>
+                  <collection />
+                </el-icon>
                 <router-link to="/home/newsmanagement">新闻管理</router-link>
               </el-menu-item>
             </el-sub-menu>
@@ -87,16 +93,18 @@ import {
   Edit,
   Setting,
   TrendCharts,
+  Collection
 } from '@element-plus/icons-vue'
 import bus from '@/utils/mitt.js'
 import { ref, onMounted } from 'vue'
 
-onMounted(() => {
-  bus.on('changeWidth', changeWidth)
-})
-
 let isCollapse = ref(false)
 let width = ref(12)
+
+onMounted(() => {
+  //监听导航展开收缩事件
+  bus.on('changeWidth', changeWidth)
+})
 
 const changeWidth = () => {
   isCollapse.value = !isCollapse.value
@@ -133,7 +141,7 @@ const changeWidth = () => {
 
 .content {
   background: rgb(228, 229, 230);
-  padding-top:0;
-  padding-left:25px;
+  padding-top: 0;
+  padding-left: 25px;
 }
 </style>

@@ -16,11 +16,13 @@ service.interceptors.request.use(config => {
 })
 
 //响应拦截
-service.interceptors.response.use(config => {
-  const { code, data, msg } = config.data
-  if (code === 200) {
+service.interceptors.response.use(response => {
+  const { status, data } = response
+  if (status === 200) {
     return data
   }
+}, err => {
+  return Promise.reject(err)
 })
 
 export default service
